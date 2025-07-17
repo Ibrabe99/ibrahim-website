@@ -1,13 +1,467 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans+Arabic:wght@100..800&display=swap");
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+}
+
+:root {
+  --primary: #121212;
+  --secondary: #1f1f1f;
+  --accent: #00bcd4;
+  --background: #1c1c1c;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --text-main: #f5f5f5;
+  --text-muted: #aaaaaa;
+  --hover-color: #ff9800;
+  --glass-blur: blur(10px);
+  --border-light: rgba(255, 255, 255, 0.2);
+  --danger: #dc2626;
+}
+
+body {
+  font-family: "Bebas Neue", sans-serif;
+  font-family: "Playpen Sans Arabic", cursive;
+  font-size: 16px;
+  min-height: 100vh;
+  background-color: #121212; /* لون ثابت لو الصورة ما ظهرت */
+  background-image: url("/public/image/blob-scene-haikei_red.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-size: cover;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+p {
+  line-height: 1.4;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 20px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+  margin-bottom: 10px;
+}
+
+
+
+/* Header */
+header {
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar {
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  background-color: var(--card-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-light);
+  border-radius: 50px;
+  align-items: center;
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 2rem;
+}
+
+.navbar a {
+  color: var(--text-main);
+  font-weight: bold;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.navbar .logo {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li a {
+  margin: 0 10px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: var(--danger);
+}
+
+.navbar .send_me {
+  padding: 10px 20px;
+  border-radius: 10px;
+  height: 45px;
+  transition: all 0.3s ease;
+}
+
+.navbar .send_me:hover {
+  background-color: var(--danger);
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.navbar .send_me .send_me_link {
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.navbar .send_me .send_me_link svg {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+/* Home */
+#home {
+  padding-top: 60px;
+  overflow: hidden;
+}
+
+#home .my-jop {
+  text-align: center;
+  padding: 5rem 0;
+  margin-top: -40px;
+  font-size: 24px;
+}
+
+#home .home-header {
+  text-align: center;
+  max-width: 450px;
+  margin: auto;
+}
+
+.my-jop .slam {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--danger);
+}
+
+.my-jop .my-name {
+  color: var(--danger);
+}
+
+.my-jop .work {
+  margin-top: px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.my-jop .work h1 {
+  margin-right: 10px;
+}
+
+.work .writer {
+  color: var(--danger);
+}
+
+#home .btns {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#home .btns .btn{
+  padding: 10px 30px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--danger);
+  background-color: var(--danger);
+  margin: 0 5px;
+}
+
+#home .btns .btn.cv{
+  color: #ffffff;
+  background-color: var(--danger);
+}
+
+
+
+
+
+
+/* Social Section */
+
+
+.social-content {
+  position: fixed;
+  bottom: 160px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+}
+
+
+
+
+.line {
+  height: 2px;
+  background-color: #aaa;
+  width: 100px;
+}
+
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.social-links li a {
+  color: var(--text-main);
+  font-size: 22px;
+  transition: color 0.3s;
+}
+
+.social-links li a:hover {
+  color: var(--text-muted);
+}
+
+
+
+
+
+/* تنسيقات خاصة بقسم المهارات (Skills Section) */
+.skills-section {
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.skills-section h2 {
+  font-size: 2.5em;
+  color: var(--text-main);
+  margin-bottom: 40px;
+}
+
+/* تنسيقات كل "بطاقة مهارة" (الدائرة + الاسم) */
+.skill {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center; /* توسيط الدائرة والاسم أفقياً داخل هذه البطاقة */
+  justify-content: center; /* توسيط الدائرة والاسم عمودياً داخل هذه البطاقة */
+  margin: 0 5px; /* **قللنا الهامش الأفقي لتقريب المهارات من بعضها** */
+  width: 130px; /* **قللنا عرض بطاقة المهارة لتكون مدمجة أكثر** */
+  box-sizing: border-box;
+  padding: 5px; /* حشو داخلي خفيف */
+}
+
+/* الدائرة الخارجية */
+.skill .outer {
+  width: 120px; /* حجم الدائرة الخارجية */
+  height: 120px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* **تأكد أن هذا لا يسبب أي هامش إضافي** */
+  margin: 0;
+  padding: 0;
+}
+
+/* الدائرة الداخلية (تحتوي على الرقم) */
+.skill .inner {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  /* **تأكد أن هذا لا يسبب أي هامش إضافي** */
+  margin: 0;
+  padding: 0;
+}
+
+/* الرقم داخل الدائرة الداخلية */
+.skill .inner div {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* دائرة التقدم (الـ SVG) */
+.skill circle {
+  fill: none;
+  stroke-width: 13px;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+/* عنصر الـ SVG نفسه (يحتوي على الدائرة) */
+.skill svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  z-index: 0;
+}
+
+/* اسم المهارة */
+.skill-name {
+  text-align: center;
+  width: 100%; /* يأخذ عرض الأب (.skill) بالكامل */
+  display: block;
+  margin-top: 20px; /* **قللنا المسافة بشكل كبير هنا** */
+  font-size: 0.9em; /* **صغّرنا حجم الخط قليلاً** */
+  font-weight: bold;
+  color: var(--text-main);
+  z-index: 2;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  transition: color 0.3s ease;
+  
+}
+
+/* تنسيقات ترتيب الدوائر في وضع الـ Grid (لو أقل من 4 مهارات) */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; /* **قللنا المسافة بين الدوائر في الـ grid** */
+  margin-top: 30px;
+}
+
+/* تنسيقات السلايدر (خاصة بمكتبة react-slick) */
+.skills-slider {
+  width: 100%; /* **تأكد أنه 100% ليناسب الحاوية** */
+  margin: 30px auto;
+  position: relative;
+  padding: 0 100px; /* **قللنا الـ padding الأفقية للسلايدر نفسه** */
+  box-sizing: border-box;
+  /* **إزالة display:flex و padding هنا لو موجودة من قبل عشان react-slick بيتحكم فيها** */
+}
+
+/* **مهم جداً**: تنسيقات الشريحة الواحدة داخل السلايدر */
+.slick-list { /* **استهدفنا slick-list لأنها الحاوية الفعلية للشرائح** */
+  margin: 0 -5px; /* **لإزالة أي مسافة سلبية قد تسبب شريط التمرير الأفقي** */
+}
+
+.slick-slide {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: auto !important;
+  padding: 0 5px; /* **هام جداً: حشو أفقي لكل شريحة لإنشاء مسافة بينها** */
+  box-sizing: border-box;
+}
+
+.slick-slide > div {
+  /* هذا الـ div هو الذي يحتوي على مكون .skill داخل كل شريحة */
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+ 
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* تنسيقات أزرار السلايدر (الأسهم) */
+.slick-prev, .slick-next { /* **تأكد أنك تستهدف العنصر نفسه، وليس فقط :before** */
+  z-index: 100; /* للتأكد أنها تظهر فوق كل شيء */
+  font-size: 0; /* لإخفاء أي نص افتراضي للسهم */
+  width: 30px; /* عرض الأزرار */
+  height: 30px; /* ارتفاع الأزرار */
+}
+
+.slick-prev {
+  left: -15x; /* **ضبط موقع السهم الأيسر** */
+}
+
+.slick-next {
+  right: -10px; /* **ضبط موقع السهم الأيمن** */
+}
+
+.slick-prev:before, .slick-next:before {
+  font-family: 'slick'; /* **تأكد من أن هذا الخط موجود** */
+  font-size: 30px !important;
+  line-height: 1;
+  opacity: 0.8;
+  color: var(--accent) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* تنسيقات نقاط السلايدر (Dots) */
+.slick-dots {
+  bottom: -35px !important; /* **أنزلناها أكثر لتجنب التداخل مع الأسماء** */
+  margin-top: 20px; /* مسافة من السلايدر نفسه */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.slick-dots li button:before {
+  color: var(--text-muted) !important;
+  font-size: 12px !important;
+  opacity: 0.5;
+  transition: color .5s ease, opacity .5s ease;
+  content: "•";
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1;
+  display: inline-block;
+}
+
+.slick-dots li.slick-active button:before {
+  color: var(--accent) !important;
+  opacity: 1;
 }
