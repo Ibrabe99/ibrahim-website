@@ -10,7 +10,7 @@ function Skills() {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/website_dashboard/api/skills");
+        const response = await axios.get("http://www.ibrahim.page.gd/api/skills");
         const data = response.data;
 
         const initialSkillsWithCounters = data.map(skill => ({

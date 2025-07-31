@@ -8,7 +8,8 @@ const About_me = () => {
   useEffect(() => {
     const fetchAdminProfile = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/website_dashboard/api/admin");
+        const response = await axios.get("http://www.ibrahim.page.gd/api/admin");
+        // const response = await axios.get("http://localhost:8080/website_dashboard/api/admin");
 
         // اطبع الاستجابة كاملة علشان نعرف مكان الداتا الصحيح
         console.log("الرد الكامل من API:", response.data);

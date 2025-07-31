@@ -19,7 +19,7 @@ export default function Contact_me() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:8080/website_dashboard/api/contact", {
+      const res = await fetch("http://www.ibrahim.page.gd/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,5 +1,14 @@
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+// App.js
+import React, { useEffect, useState } from "react"; 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { Helmet } from 'react-helmet';
+import axios from 'axios'; 
+
 import Header from "./component/header";
 import Home from "./component/Home";
 import Projects from "./component/Projects";
@@ -9,36 +18,83 @@ import Contact_me from "./component/Contact_me";
 import Details from "./component/Details";
 import Social from "./component/Social";
 import Social_2 from "./component/Social_2";
+
 import './index.css';
-import './js.js';
+
+
 
 function TrackVisits() {
   const location = useLocation();
 
   useEffect(() => {
-    // إرسال طلب تسجيل الزيارة عند تغير المسار (أي زيارة صفحة جديدة)
-    fetch("http://localhost:8080/website_dashboard/api/track-visit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ page: location.pathname }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("تم تسجيل زيارة الصفحة:", location.pathname);
-      })
-      .catch((err) => {
-        console.error("خطأ في تسجيل الزيارة:", err);
-      });
+    const trackVisit = async () => {
+      try {
+        const res = await fetch("http://www.ibrahim.page.gd/api/track-visit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ page: location.pathname }),
+        });
+
+        const data = await res.json();
+        console.log("✅ تم تسجيل زيارة:", location.pathname, data);
+      } catch (err) {
+        console.error("❌ خطأ في تسجيل الزيارة:", err);
+      }
+    };
+
+    trackVisit();
   }, [location]);
 
-  return null; // هذا مكون وظيفته فقط تتبع الزيارات ولا يعرض شيء
+  return null;
 }
 
 function App() {
+ 
+  const [siteTitle, setSiteTitle] = useState('Ibrahim'); 
+  const [siteFavicon, setSiteFavicon] = useState('/public/image/ابراهيم.jpg'); // لوجو افتراضي
+
+  useEffect(() => {
+    
+    const fetchAdminInfo = async () => {
+      try {
+        const response = await axios.get("http://www.ibrahim.page.gd/api/admin");
+        const adminData = response.data.data; 
+
+        if (adminData) {
+         
+          if (adminData.name) {
+            setSiteTitle(adminData.name);
+          }
+        
+          if (adminData.photo) {
+      
+            setSiteFavicon(`http://www.ibrahim.page.gd/public/${adminData.photo}`);
+          }
+        }
+      } catch (error) {
+        console.error("خطأ في جلب بيانات الأدمن للتايتل واللوجو:", error);
+       
+      }
+    };
+
+    fetchAdminInfo();
+  }, []); 
+
   return (
     <Router>
-      <Header />
+ 
+      <Helmet>
+        <title>{siteTitle}</title>
+        <link rel="icon" href={siteFavicon} />
+      
+        <link rel="apple-touch-icon" href={siteFavicon} />
+      </Helmet>
+
+      <Header /> 
       <TrackVisits />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
@@ -47,9 +103,10 @@ function App() {
         <Route path="/contact_me" element={<Contact_me />} />
         <Route path="/details/:type/:id" element={<Details />} />
       </Routes>
-      <Social />
+
+      <Social /> 
       <div className="social_2">
-      <Social_2 />
+        <Social_2 /> 
       </div>
     </Router>
   );

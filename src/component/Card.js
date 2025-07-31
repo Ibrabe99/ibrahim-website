@@ -50,9 +50,17 @@ export default function CardSlider({ item }) {
 <img
   src={
     items.image
-      ? `http://localhost:8080/website_dashboard/public/${items.image}`
+      ? `http://www.ibrahim.page.gd/public/${items.image}`
       : "/image/new.svg"
-  }
+  }  
+  
+  // src={
+  //   items.image
+  //     ? `http://localhost:8080/website_dashboard/public/${items.image}`
+  //     : "/image/new.svg"
+  // }
+
+
   alt={items.title}
   className="w-full object-cover rounded-md"
 />

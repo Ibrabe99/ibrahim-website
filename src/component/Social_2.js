@@ -6,7 +6,7 @@ export default function Social_2() {
   const [social, setSocial] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/website_dashboard/api/social")
+    fetch("http://www.ibrahim.page.gd/api/social")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {

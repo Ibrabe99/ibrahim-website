@@ -17,12 +17,12 @@ export default function Details() {
     if (!imgPath) return "/image/new.svg";
     if (imgPath.startsWith("http")) return imgPath;
     if (imgPath.startsWith("storage/")) {
-      return `http://localhost:8080/website_dashboard/public/${imgPath}`;
+      return `http://www.ibrahim.page.gd/public/${imgPath}`;
     }
     if (imgPath.startsWith("public/")) {
-      return `http://localhost:8080/website_dashboard/public/${imgPath.slice(7)}`;
+      return `http://www.ibrahim.page.gd/public/${imgPath.slice(7)}`;
     }
-    return `http://localhost:8080/website_dashboard/public/${imgPath}`;
+    return `http://www.ibrahim.page.gd/public/${imgPath}`;
   };
 
   // تسجيل زيارة عند دخول الصفحة
@@ -35,7 +35,7 @@ export default function Details() {
         setError(null);
 
         // جلب البيانات
-        const res = await fetch(`http://localhost:8080/website_dashboard/api/${type}/${id}`);
+        const res = await fetch(`http://www.ibrahim.page.gd/api/${type}/${id}`);
         if (!res.ok) throw new Error("فشل جلب البيانات");
         const json = await res.json();
         setData(json.data || json);
@@ -43,7 +43,7 @@ export default function Details() {
         // تسجيل الزيارة فقط إذا لم يتم تسجيلها مسبقاً في التخزين المحلي (localStorage)
         const visitKey = `${type}-${id}-visited`;
         if (!localStorage.getItem(visitKey)) {
-          await fetch(`http://localhost:8080/website_dashboard/api/${type}/${id}/stats`, {
+          await fetch(`http://www.ibrahim.page.gd/api/${type}/${id}/stats`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ action: "view" }),
@@ -64,7 +64,7 @@ export default function Details() {
     if (liked) return; // لا تسمح بالإعجاب مرتين
 
     try {
-      const res = await fetch(`http://localhost:8080/website_dashboard/api/${type}/${id}/stats`, {
+      const res = await fetch(`http://www.ibrahim.page.gd/api/${type}/${id}/stats`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "like" }),

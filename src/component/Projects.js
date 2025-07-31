@@ -7,7 +7,7 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/website_dashboard/api/projects")
+    axios.get("http://www.ibrahim.page.gd/api/projects")
       .then(res => setProjects(res.data))
       .catch(err => console.error(err));
   }, []);
