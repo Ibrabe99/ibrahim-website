@@ -8,7 +8,7 @@ export class Social extends Component {
   };
 
   componentDidMount() {
-    fetch("http://www.ibrahim.page.gd/api/social")
+    fetch("https://ibrahim.page.gd/api/social")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {

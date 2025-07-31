@@ -7,7 +7,7 @@ const Articles = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    axios.get("http://www.ibrahim.page.gd/api/articles")
+    axios.get("https://ibrahim.page.gd/api/articles")
     // axios.get("http://localhost:8080/website_dashboard/api/articles")
       .then(res => setArticles(res.data))
       .catch(err => console.error(err));

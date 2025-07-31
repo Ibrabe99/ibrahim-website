@@ -12,7 +12,7 @@ export default function Header() {
     const fetchAdminData = async () => {
       try {
         const response = await axios.get(
-          "http://www.ibrahim.page.gd/api/admin"
+          "https://ibrahim.page.gd/api/admin"
           // "http://localhost:8080/website_dashboard/api/admin"
         );
         const data = response.data;
@@ -20,7 +20,7 @@ export default function Header() {
         if (data && data.photo) {
           setAdminPhoto(
             // `http://localhost:8080/website_dashboard/public/${data.photo}`
-            `http://www.ibrahim.page.gd/public/${data.photo}`
+            `https://ibrahim.page.gd/public/${data.photo}`
 
           );
         }

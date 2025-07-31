@@ -29,7 +29,7 @@ function TrackVisits() {
   useEffect(() => {
     const trackVisit = async () => {
       try {
-        const res = await fetch("http://www.ibrahim.page.gd/api/track-visit", {
+        const res = await fetch("https://ibrahim.page.gd/api/track-visit", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -59,7 +59,7 @@ function App() {
     
     const fetchAdminInfo = async () => {
       try {
-        const response = await axios.get("https://www.ibrahim.page.gd/api/admin");
+        const response = await axios.get("https://ibrahim.page.gd/api/admin");
         const adminData = response.data.data; 
 
         if (adminData) {
@@ -70,7 +70,7 @@ function App() {
         
           if (adminData.photo) {
       
-            setSiteFavicon(`http://www.ibrahim.page.gd/public/${adminData.photo}`);
+            setSiteFavicon(`https://ibrahim.page.gd/public/${adminData.photo}`);
           }
         }
       } catch (error) {

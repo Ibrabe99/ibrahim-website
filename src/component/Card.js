@@ -50,7 +50,7 @@ export default function CardSlider({ item }) {
 <img
   src={
     items.image
-      ? `http://www.ibrahim.page.gd/public/${items.image}`
+      ? `https://ibrahim.page.gd/public/${items.image}`
       : "/image/new.svg"
   }  
   

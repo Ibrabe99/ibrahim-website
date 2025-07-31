@@ -7,7 +7,7 @@ export default function Home() {
   const [cvUrl, setCvUrl] = useState("");
 
   useEffect(() => {
-    fetch("http://www.ibrahim.page.gd/api/cv")
+    fetch("https://ibrahim.page.gd/api/cv")
       .then((res) => res.json())
       .then((data) => {
         setCvUrl(data.url); 
