@@ -4,7 +4,6 @@
 @tailwind components;
 @tailwind utilities; */
 
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -54,6 +53,7 @@ p {
   line-height: 1.4;
 }
 
+/* Utility classes */
 .container {
   max-width: 1100px;
   margin: auto;
@@ -67,9 +67,12 @@ p {
   margin-bottom: 10px;
 }
 
+#main {
+  padding-top: 50px;
+  overflow: hidden;
+}
 
-
-/* Header */
+/* Header Start */
 header {
   padding: 20px;
   text-align: center;
@@ -100,8 +103,9 @@ header {
 }
 
 .navbar .logo {
-  font-size: 24px;
-  font-weight: 600;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }
 
 .navbar ul {
@@ -122,7 +126,7 @@ header {
 .navbar .send_me {
   padding: 10px 20px;
   border-radius: 10px;
-  height: 45px;
+  height: 40px;
   transition: all 0.3s ease;
 }
 
@@ -145,10 +149,72 @@ header {
   margin-left: 5px;
 }
 
-/* Home */
+
+.navbar .ibra{
+  display: none;
+}
+
+.navbar .menu{
+  display: none;
+}
+
+.off-screen-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--danger);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  color: white;
+  animation: fadeIn .6s ease-in-out;
+}
+
+.close-icon {
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.off-screen-links {
+  list-style: none;
+  padding: 0;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.off-screen-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: color 0.2s ease;
+}
+
+.off-screen-links li a:hover {
+  color: #f87171;
+}
+
+.off-screen-social {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Header End */
+
+/* Main Start */
+
+/* Home Start */
 #home {
-  padding-top: 60px;
-  overflow: hidden;
 }
 
 #home .my-jop {
@@ -175,7 +241,6 @@ header {
 }
 
 .my-jop .work {
-  margin-top: px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -195,7 +260,7 @@ header {
   margin-bottom: 20px;
 }
 
-#home .btns .btn{
+#home .btns .btn {
   padding: 10px 30px;
   border-radius: 10px;
   font-size: 12px;
@@ -205,18 +270,14 @@ header {
   margin: 0 5px;
 }
 
-#home .btns .btn.cv{
+#home .btns .btn.cv {
   color: #ffffff;
   background-color: var(--danger);
 }
 
+/* Home End */
 
-
-
-
-
-/* Social Section */
-
+/* Social Section Start */
 
 .social-content {
   position: fixed;
@@ -230,16 +291,6 @@ header {
   border: none;
   backdrop-filter: none;
 }
-
-
-
-
-.line {
-  height: 2px;
-  background-color: #aaa;
-  width: 100px;
-}
-
 
 .social-links {
   display: flex;
@@ -259,11 +310,13 @@ header {
   color: var(--text-muted);
 }
 
+.social_2{
+  display: none;
+}
 
+/* Social Section End */
 
-
-
-/* تنسيقات خاصة بقسم المهارات (Skills Section) */
+/* Skills Section Start */
 .skills-section {
   padding: 20px 0;
   text-align: center;
@@ -276,21 +329,19 @@ header {
   margin-bottom: 40px;
 }
 
-/* تنسيقات كل "بطاقة مهارة" (الدائرة + الاسم) */
 .skill {
   display: flex !important;
   flex-direction: column;
-  align-items: center; /* توسيط الدائرة والاسم أفقياً داخل هذه البطاقة */
-  justify-content: center; /* توسيط الدائرة والاسم عمودياً داخل هذه البطاقة */
-  margin: 0 5px; /* **قللنا الهامش الأفقي لتقريب المهارات من بعضها** */
-  width: 130px; /* **قللنا عرض بطاقة المهارة لتكون مدمجة أكثر** */
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  width: 130px;
   box-sizing: border-box;
-  padding: 5px; /* حشو داخلي خفيف */
+  padding: 5px;
 }
 
-/* الدائرة الخارجية */
 .skill .outer {
-  width: 120px; /* حجم الدائرة الخارجية */
+  width: 120px;
   height: 120px;
   border-radius: 50%;
   border: none;
@@ -300,12 +351,10 @@ header {
   justify-content: center;
   align-items: center;
   position: relative;
-  /* **تأكد أن هذا لا يسبب أي هامش إضافي** */
   margin: 0;
   padding: 0;
 }
 
-/* الدائرة الداخلية (تحتوي على الرقم) */
 .skill .inner {
   width: 90px;
   height: 90px;
@@ -317,19 +366,16 @@ header {
   justify-content: center;
   align-items: center;
   z-index: 1;
-  /* **تأكد أن هذا لا يسبب أي هامش إضافي** */
   margin: 0;
   padding: 0;
 }
 
-/* الرقم داخل الدائرة الداخلية */
 .skill .inner div {
   font-size: 20px;
   font-weight: 600;
   color: var(--text-main);
 }
 
-/* دائرة التقدم (الـ SVG) */
 .skill circle {
   fill: none;
   stroke-width: 13px;
@@ -337,7 +383,6 @@ header {
   transition: stroke-dashoffset 1s ease-in-out;
 }
 
-/* عنصر الـ SVG نفسه (يحتوي على الدائرة) */
 .skill svg {
   position: absolute;
   top: 0;
@@ -348,13 +393,12 @@ header {
   z-index: 0;
 }
 
-/* اسم المهارة */
 .skill-name {
   text-align: center;
-  width: 100%; /* يأخذ عرض الأب (.skill) بالكامل */
+  width: 100%;
   display: block;
-  margin-top: 20px; /* **قللنا المسافة بشكل كبير هنا** */
-  font-size: 0.9em; /* **صغّرنا حجم الخط قليلاً** */
+  margin-top: 20px;
+  font-size: 0.9em;
   font-weight: bold;
   color: var(--text-main);
   z-index: 2;
@@ -362,31 +406,26 @@ header {
   text-transform: uppercase;
   letter-spacing: 5px;
   transition: color 0.3s ease;
-  
 }
 
-/* تنسيقات ترتيب الدوائر في وضع الـ Grid (لو أقل من 4 مهارات) */
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px; /* **قللنا المسافة بين الدوائر في الـ grid** */
+  gap: 15px;
   margin-top: 30px;
 }
 
-/* تنسيقات السلايدر (خاصة بمكتبة react-slick) */
 .skills-slider {
-  width: 100%; /* **تأكد أنه 100% ليناسب الحاوية** */
+  width: 100%;
   margin: 30px auto;
   position: relative;
-  padding: 0 100px; /* **قللنا الـ padding الأفقية للسلايدر نفسه** */
+  padding: 0 100px;
   box-sizing: border-box;
-  /* **إزالة display:flex و padding هنا لو موجودة من قبل عشان react-slick بيتحكم فيها** */
 }
 
-/* **مهم جداً**: تنسيقات الشريحة الواحدة داخل السلايدر */
-.slick-list { /* **استهدفنا slick-list لأنها الحاوية الفعلية للشرائح** */
-  margin: 0 -5px; /* **لإزالة أي مسافة سلبية قد تسبب شريط التمرير الأفقي** */
+.slick-list {
+  margin: 0 -5px;
 }
 
 .slick-slide {
@@ -394,12 +433,11 @@ header {
   justify-content: center !important;
   align-items: center !important;
   height: auto !important;
-  padding: 0 5px; /* **هام جداً: حشو أفقي لكل شريحة لإنشاء مسافة بينها** */
+  padding: 0 5px;
   box-sizing: border-box;
 }
 
 .slick-slide > div {
-  /* هذا الـ div هو الذي يحتوي على مكون .skill داخل كل شريحة */
   display: flex !important;
   flex-direction: column;
   justify-content: center !important;
@@ -407,30 +445,30 @@ header {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
- 
   background: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
 
-/* تنسيقات أزرار السلايدر (الأسهم) */
-.slick-prev, .slick-next { /* **تأكد أنك تستهدف العنصر نفسه، وليس فقط :before** */
-  z-index: 100; /* للتأكد أنها تظهر فوق كل شيء */
-  font-size: 0; /* لإخفاء أي نص افتراضي للسهم */
-  width: 30px; /* عرض الأزرار */
-  height: 30px; /* ارتفاع الأزرار */
+.slick-prev,
+.slick-next {
+  z-index: 100;
+  font-size: 0;
+  width: 30px;
+  height: 30px;
 }
 
 .slick-prev {
-  left: -15x; /* **ضبط موقع السهم الأيسر** */
+  left: -15x;
 }
 
 .slick-next {
-  right: -10px; /* **ضبط موقع السهم الأيمن** */
+  right: -10px;
 }
 
-.slick-prev:before, .slick-next:before {
-  font-family: 'slick'; /* **تأكد من أن هذا الخط موجود** */
+.slick-prev:before,
+.slick-next:before {
+  font-family: "slick";
   font-size: 30px !important;
   line-height: 1;
   opacity: 0.8;
@@ -439,10 +477,9 @@ header {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* تنسيقات نقاط السلايدر (Dots) */
 .slick-dots {
-  bottom: -35px !important; /* **أنزلناها أكثر لتجنب التداخل مع الأسماء** */
-  margin-top: 20px; /* مسافة من السلايدر نفسه */
+  bottom: -35px !important;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -453,7 +490,7 @@ header {
   color: var(--text-muted) !important;
   font-size: 12px !important;
   opacity: 0.5;
-  transition: color .5s ease, opacity .5s ease;
+  transition: color 0.5s ease, opacity 0.5s ease;
   content: "•";
   font-weight: bold;
   font-size: 16px;
@@ -461,7 +498,1843 @@ header {
   display: inline-block;
 }
 
-.slick-dots li.slick-active button:before {
+.slick-do5s li.slick-active button:before {
   color: var(--accent) !important;
   opacity: 1;
 }
+
+/* Skills Section End */
+
+/* Projects Start */
+#projects {
+}
+
+#projects .projects-header {
+  direction: rtl;
+}
+
+#projects .section-header h2 {
+  font-size: 30px;
+  margin: 15px 0;
+  color: var(--text-main);
+}
+
+#projects .section-header p {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.card-container {
+  margin: 0px;
+  padding: 0px;
+}
+
+.card-container .card {
+  margin: 0;
+  padding: 0;
+  background-color: var(--danger);
+  border-top-left-radius: 100% 70%;
+  border-top-right-radius: 10px;
+  display: flex;
+  direction: rtl;
+}
+
+.card-container .card img {
+  margin: 0;
+  padding: 0;
+  height: 30%;
+  width: 30%;
+  margin-left: 10px;
+  border-radius: 10px;
+  border: 2px solid var(--border-light);
+}
+
+.card-container .card .card-content {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 50px;
+}
+
+.card-container .card-body {
+  padding: 0;
+  margin: 0;
+  width: 63%;
+  margin-right: 10px;
+}
+
+.card-container .card-body .card-title {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.card-container .card-body .card-subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.card-container .card-body .card-text {
+  width: 95%;
+  font-weight: 300;
+}
+
+.card-container .card-body a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  color: var(--text-main);
+  border-radius: 10px;
+  background-color: var(--background);
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.card-container .card-body a:hover {
+  font-size: 17px;
+}
+
+.card-container .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border-top: var(--text-muted) 1px solid;
+  width: 95%;
+  margin-right: 15px;
+  flex-wrap: wrap;
+  background-color: var(--danger);
+  padding: 20px;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.card-container .card-footer .btn {
+  border-radius: 5px;
+  padding: 10px 10px;
+  margin-top: 20px;
+}
+
+.card-container .card-footer .btn-live {
+  background: #ff9800;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 188, 212, 1) 0%,
+    rgba(255, 152, 0, 1) 100%
+  );
+  margin-right: 10px;
+  color: var(--text-main);
+  transition: 0.5s ease;
+}
+
+.card-container .card-footer .btn-live:hover {
+  font-size: 16px;
+}
+
+.card-container .card-footer .btn-github {
+  border: 1px solid var(--text-muted);
+  color: var(--text-main);
+
+  transition: 0.5s ease;
+}
+
+.card-container .card-footer .btn-github:hover {
+  background: #ff9800;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 188, 212, 1) 0%,
+    rgba(255, 152, 0, 1) 100%
+  );
+}
+
+.card-details {
+  display: flex;
+  gap: 15px;
+  font-size: 15px;
+  margin-left: 10px;
+  color: var(--text-muted);
+  align-items: center;
+}
+
+.card-details svg {
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+/* تنسيقات أزرار السلايدر (الأسهم) */
+.slick-prev:before,
+.slick-next:before {
+  color: var(--accent, #00bcd4) !important;
+  font-size: 30px !important;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+/* تنسيقات نقاط السلايدر (Dots) */
+.slick-dots li button:before {
+  color: var(--text-muted, #aaaaaa) !important;
+  opacity: 0.5;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  padding-bottom: 10px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: var(--accent, #00bcd4) !important;
+  opacity: 1;
+}
+
+/* رسالة التحميل */
+.loading-message {
+  text-align: center;
+  font-size: 1.2em;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted, #aaaaaa);
+  padding: 50px;
+}
+
+/* موقع الأسهم */
+.slick-prev {
+  left: -33px !important;
+}
+.slick-next {
+  right: -33px !important;
+}
+.slick-prev,
+.slick-next {
+  z-index: 100;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+/* Projects End */
+
+/* Main End */
+
+/* About_me Start */
+
+.about_me-content {
+  padding: 30px;
+  text-align: right;
+  color: var(--text-main, #f5f5f5);
+  direction: rtl;
+}
+
+.about_me-content h1 {
+  font-size: 2.8em;
+  color: var(--danger, #dc2626);
+  margin-bottom: 25px;
+  font-family: "Bebas Neue", sans-serif;
+  text-align: center;
+  display: block;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.about_me-content h1::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(
+    to left,
+    var(--danger),
+    var(--primary)
+  ); /* تدرج لوني للخط */
+  margin: 10px auto 0 auto;
+  border-radius: 5px;
+}
+
+.about_me-content p {
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: var(--text-muted, #aaaaaa);
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify;
+  font-family: "Playpen Sans Arabic", cursive;
+}
+
+@media (max-width: 768px) {
+  .about_me-content {
+    padding: 20px;
+  }
+  .about_me-content h1 {
+    font-size: 2.2em;
+  }
+  .about_me-content p {
+    font-size: 1em;
+    text-align: right;
+  }
+}
+
+/* About_me End */
+
+/* Contact_me Start  */
+.contact-form-content {
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.contact-title {
+  font-size: 35px;
+  color: var(--danger, #dc2626);
+  margin-bottom: 15px;
+  font-family: "Bebas Neue", sans-serif;
+  text-align: center;
+  position: relative;
+  padding-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.contact-title::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to left, var(--danger), var(--primary));
+  margin: 10px auto 0 auto;
+  border-radius: 5px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-label {
+  font-size: 1.2em;
+  color: var(--text-main, #f5f5f5);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: var(--secondary, #9b9494);
+  border: 1px solid var(--border-light, rgba(255, 255, 255, 0.3));
+  border-radius: 10px;
+  color: var(--text-main, #f5f5f5);
+  font-size: 1.05em;
+  font-family: "Playpen Sans Arabic", cursive;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  box-sizing: border-box;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-muted, #aaaaaa);
+  opacity: 0.8;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--accent, #00bcd4);
+  box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.3);
+  outline: none;
+  background-color: var(--primary, #121212);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.submit-button {
+  background-color: var(--accent, #00bcd4);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  align-self: flex-end;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1.5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.submit-button:hover {
+  background-color: var(--danger, #ff9800);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .contact-form-content {
+    padding: 25px;
+    gap: 20px;
+  }
+  .form-row {
+    flex-direction: column;
+  }
+  .contact-title {
+    font-size: 2.5em;
+  }
+  .contact-title::after {
+    width: 60px;
+  }
+  .form-label {
+    font-size: 1em;
+  }
+  .form-input,
+  .form-textarea {
+    padding: 12px 15px;
+    font-size: 0.95em;
+  }
+  .submit-button {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+}
+
+/* Detalis Start */
+
+#details {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  direction: rtl;
+  gap: 20px;
+}
+
+#details .title {
+  color: var(--text-main, #333);
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+#details .category_name {
+  color: var(--text-muted, #777);
+}
+
+#details .img_details {
+  border: 2px solid #b8b1b1;
+  border-radius: 15px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 15px;
+}
+
+#details .description {
+  padding-top: 50px;
+  color: var(--text-main, #333);
+  line-height: 1.5;
+}
+
+.btn {
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-top: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn-live {
+  background: linear-gradient(90deg, #00bcd4, #ff9800);
+  color: var(--text-main, #fff);
+}
+
+.btn-live:hover {
+  font-size: 16px;
+}
+
+.btn-github {
+  border: 1px solid var(--text-muted, #777);
+  color: var(--text-main, #333);
+}
+
+.btn-github:hover {
+  background: linear-gradient(90deg, #00bcd4, #ff9800);
+  color: #fff;
+}
+
+.details_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  color: var(--text-muted);
+  gap: 10px;
+}
+
+.like-button {
+  cursor: pointer;
+  color: #888;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease;
+}
+
+.like-button.liked {
+  color: white;
+}
+
+@media (max-width: 1435px) {
+  .container {
+    max-height: 660px;
+  }
+
+  .my-jop {
+    margin-bottom: -35px;
+  }
+
+  .my-jop .slam {
+    font-size: 32px;
+  }
+
+  .my-jop .my-name {
+    font-size: 34px;
+  }
+
+  .my-jop .work {
+    font-size: 22px;
+  }
+  .work .writer {
+    font-size: 28px;
+  }
+
+  /* Skills Section Start */
+  .skills-section {
+    padding: 10px 0;
+  }
+
+  .skills-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .skill .outer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill .inner div {
+    font-size: 16px;
+  }
+
+  .skill-name {
+    margin-top: 15px;
+    font-size: 0.88em;
+  }
+
+  .skills-slider {
+    width: 98%;
+    margin: 25px auto;
+  }
+
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+    max-height: 690px;
+  }
+
+  .my-jop {
+    margin-bottom: -35px;
+  }
+
+  .my-jop .slam {
+    font-size: 32px;
+  }
+
+  .my-jop .my-name {
+    font-size: 34px;
+  }
+
+  .my-jop .work {
+    font-size: 22px;
+  }
+  .work .writer {
+    font-size: 28px;
+  }
+
+  /* Skills Section Start */
+  .skills-section {
+    padding: 10px 0;
+  }
+
+  .skills-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .skill .outer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill .inner div {
+    font-size: 16px;
+  }
+
+  .skill-name {
+    margin-top: 15px;
+    font-size: 0.88em;
+  }
+
+  .skills-slider {
+    width: 98%;
+    margin: 25px auto;
+  }
+
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-height: 750px;
+    max-width: 1000px;
+  }
+
+  .navbar {
+    width: 1000px;
+  }
+
+  .social-content {
+  position: fixed;
+    bottom: 30%;
+  left: 10px;
+}
+
+  .my-jop {
+    margin-bottom: -35px;
+  }
+
+  .my-jop .slam {
+    font-size: 32px;
+  }
+
+  .my-jop .my-name {
+    font-size: 34px;
+  }
+
+  .my-jop .work {
+    font-size: 22px;
+  }
+  .work .writer {
+    font-size: 28px;
+  }
+
+  /* Skills Section Start */
+  .skills-section {
+    padding: 10px 0;
+  }
+
+  .skills-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .skill .outer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill .inner div {
+    font-size: 16px;
+  }
+
+  .skill-name {
+    margin-top: 15px;
+    font-size: 0.88em;
+  }
+
+  .skills-slider {
+    width: 98%;
+    margin: 25px auto;
+  }
+
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+}
+
+
+
+@media (max-width: 1070px) {
+  .container {
+    max-height: 750px;
+    max-width: 900px;
+  }
+
+  .navbar {
+    width: 900px;
+  }
+
+  .social-content {
+    bottom: 30%;
+  left: 10px;
+}
+
+  .my-jop {
+    margin-bottom: -35px;
+  }
+
+  .my-jop .slam {
+    font-size: 32px;
+  }
+
+  .my-jop .my-name {
+    font-size: 34px;
+  }
+
+  .my-jop .work {
+    font-size: 22px;
+  }
+  .work .writer {
+    font-size: 28px;
+  }
+
+  /* Skills Section Start */
+  .skills-section {
+    padding: 10px 0;
+  }
+
+  .skills-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .skill .outer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill .inner div {
+    font-size: 16px;
+  }
+
+  .skill-name {
+    margin-top: 15px;
+    font-size: 0.88em;
+  }
+
+  .skills-slider {
+    width: 98%;
+    margin: 25px auto;
+  }
+
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+}
+
+
+
+@media (max-width: 980px) {
+  .container {
+    max-height: 750px;
+    max-width: 800px;
+  }
+
+  .navbar {
+    width: 800px;
+  }
+
+  .social-content {
+    bottom: 30%;
+  left: 10px;
+}
+
+  .my-jop {
+    margin-bottom: -35px;
+  }
+
+  .my-jop .slam {
+    font-size: 32px;
+  }
+
+  .my-jop .my-name {
+    font-size: 34px;
+  }
+
+  .my-jop .work {
+    font-size: 22px;
+  }
+  .work .writer {
+    font-size: 28px;
+  }
+
+  /* Skills Section Start */
+  .skills-section {
+    padding: 10px 0;
+  }
+
+  .skills-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .skill .outer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill .inner div {
+    font-size: 16px;
+  }
+
+  .skill-name {
+    margin-top: 15px;
+    font-size: 0.88em;
+  }
+
+  .skills-slider {
+    width: 98%;
+    margin: 25px auto;
+  }
+
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+}
+
+
+
+
+
+@media (max-width: 880px) {
+  .container {
+    max-height: 750px;
+    max-width: 700px;
+  }
+
+  .navbar {
+    width: 700px;
+  }
+
+  .social-content {
+  bottom: 30%;
+  left: 10px;
+}
+
+  .my-jop {
+    margin-bottom: -35px;
+  }
+
+  .my-jop .slam {
+    font-size: 32px;
+  }
+
+  .my-jop .my-name {
+    font-size: 34px;
+  }
+
+  .my-jop .work {
+    font-size: 22px;
+  }
+  .work .writer {
+    font-size: 28px;
+  }
+
+  /* Skills Section Start */
+  .skills-section {
+    padding: 10px 0;
+  }
+
+  .skills-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .skill .outer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill .inner div {
+    font-size: 16px;
+  }
+
+  .skill-name {
+    margin-top: 15px;
+    font-size: 0.88em;
+  }
+
+  .skills-slider {
+    width: 98%;
+    margin: 25px auto;
+  }
+
+  .slick-dots{
+    margin: auto;
+    margin-top: -20px;
+
+  }
+
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  body{
+  background-color: #121212; 
+  background-image: url("/public/image/blob-scene-haikei-750.svg");
+  background-repeat: no-repeat;
+  background-position: center 20px;
+  background-attachment: fixed;
+  background-size: cover;
+  }
+    .container {
+    max-height: 880px;
+    max-width: 654px;
+  }
+
+  .navbar {
+    width: 654px;
+  }
+
+  .social-content {
+  bottom: 30%;
+  left: 10px;
+}
+
+  .my-jop {
+    margin-bottom: -35px;
+  }
+
+  .my-jop .slam {
+    font-size: 32px;
+  }
+
+  .my-jop .my-name {
+    font-size: 34px;
+  }
+
+  .my-jop .work {
+    font-size: 22px;
+  }
+  .work .writer {
+    font-size: 28px;
+  }
+
+  /* Skills Section Start */
+  .skills-section {
+    padding: 10px 0;
+  }
+
+  .skills-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .skill .outer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill .inner div {
+    font-size: 16px;
+  }
+
+  .skill-name {
+    margin-top: 15px;
+    font-size: 0.88em;
+  }
+
+  .skills-slider {
+    width: 98%;
+    margin: 25px auto;
+  }
+
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+}
+
+
+@media (max-width: 750px) {
+   body {
+    background-color: #121212;
+    background-image: url("/public/image/blob-scene-haikei-750.svg");
+    background-repeat: no-repeat;
+    background-position: center 20px;
+    background-attachment: scroll;
+   
+  }
+
+
+      .container {
+    max-height: 870px;
+    max-width: 660px;
+    margin: auto;
+    padding: auto;
+  }
+
+  .navbar {
+    width: 660px;
+  }
+
+  .navbar a{
+  font-size: 11px;
+  }
+
+.social-content {
+  bottom: 30%;
+  left: 13px;
+}
+
+  .my-jop {
+    margin-bottom: -35px;
+  }
+
+  .my-jop .slam {
+    font-size: 32px;
+  }
+
+  .my-jop .my-name {
+    font-size: 34px;
+  }
+
+  .my-jop .work {
+    font-size: 22px;
+  }
+  .work .writer {
+    font-size: 28px;
+  }
+
+  /* Skills Section Start */
+  .skills-section {
+    padding: 10px 0;
+  }
+
+  .skills-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .skill .outer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill .inner div {
+    font-size: 16px;
+  }
+
+  .skill-name {
+    margin-top: 15px;
+    font-size: 0.88em;
+  }
+
+  .skills-slider {
+    width: 98%;
+    margin: 25px auto;
+  }
+
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+}
+
+
+
+@media (max-width: 732px) {
+   body {
+    background-color: #121212;
+    background-image: url("/public/image/blob-scene-haikei-750.svg");
+    background-repeat: no-repeat;
+    background-position: center 20px;
+    background-attachment: scroll;
+   
+  }
+
+
+      .container {
+    max-height: 870px;
+    max-width: 620px;
+    margin: auto;
+    padding: auto;
+  }
+
+  .navbar {
+    width: 620px;
+  }
+
+  .navbar a{
+  font-size: 11px;
+  }
+
+.social-content {
+  bottom: 30%;
+  left: 13px;
+}
+
+
+}
+
+
+
+@media (max-width: 695px) {
+   body {
+    background-color: #121212;
+    background-image: url("/public/image/blob-scene-haikei-750.svg");
+    background-repeat: no-repeat;
+    background-position: center 20px;
+    background-attachment: scroll;
+   
+  }
+
+
+      .container {
+    max-height: 870px;
+    max-width: 550px;
+    margin: auto;
+    padding: auto;
+  }
+
+  .navbar {
+    width: 550px;
+  }
+
+
+
+
+
+.social-content {
+bottom: 30%;
+  left: 13px;
+}
+
+
+ 
+  
+
+}
+
+
+
+
+@media (max-width: 620px) {
+   body {
+    background-color: #121212;
+    background-image: url("/public/image/blob-scene-haikei_phone_red.svg");
+    background-repeat: no-repeat;
+    background-position: center -10px;
+    background-attachment: scroll;
+   
+  }
+
+
+      .container {
+    max-height: 880px;
+    max-width: 520px;
+    margin: auto;
+    padding: auto;
+  }
+
+  .navbar {
+    width: 520px;
+  }
+
+  .navbar ul{
+    display: none;
+  }
+
+  .navbar .send_me{
+    display: none;
+  }
+
+
+  .navbar .ibra{
+  display: block;
+  font-size: 22px;
+
+}
+
+
+.navbar .menu{
+  display: block;
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.social_2{
+  display: block;
+}
+.social-content {
+  display: none;
+  flex-direction: row;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 20px;
+}
+
+
+  .my-jop {
+    margin-bottom: -35px;
+  }
+
+  .my-jop .slam {
+    font-size: 32px;
+  }
+
+  .my-jop .my-name {
+    font-size: 34px;
+  }
+
+  .my-jop .work {
+    font-size: 22px;
+  }
+  .work .writer {
+    font-size: 28px;
+  }
+
+  /* Skills Section Start */
+  .skills-section {
+    padding: 10px 0;
+  }
+
+  .skills-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .skill .outer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill .inner div {
+    font-size: 16px;
+  }
+
+  .skill-name {
+    margin-top: 15px;
+    font-size: 0.88em;
+  }
+
+  .skills-slider {
+    width: 98%;
+    margin: 25px auto;
+  }
+
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+}
+
+
+
+@media (max-width: 550px) {
+   body {
+    background-color: #121212;
+    background-image: url("/public/image/blob-scene-haikei_phone_red.svg");
+    background-repeat: no-repeat;
+    background-position: center -10px;
+    background-attachment: scroll;
+   
+  }
+
+
+      .container {
+    max-height: 880px;
+    max-width: 440px;
+    margin: auto;
+    padding: auto;
+  }
+
+  .navbar {
+    width: 440px;
+  }
+
+
+
+.social-content {
+  display: none;
+  flex-direction: row;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+}
+
+
+  .my-jop {
+    margin-bottom: -35px;
+  }
+
+  .my-jop .slam {
+    font-size: 32px;
+  }
+
+  .my-jop .my-name {
+    font-size: 34px;
+  }
+
+  .my-jop .work {
+    font-size: 22px;
+  }
+  .work .writer {
+    font-size: 28px;
+  }
+
+  /* Skills Section Start */
+  .skills-section {
+    padding: 10px 0;
+  }
+
+  .skills-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .skill .outer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill .inner div {
+    font-size: 16px;
+  }
+
+  .skill-name {
+    margin-top: 15px;
+    font-size: 0.88em;
+  }
+
+  .skills-slider {
+    width: 98%;
+    margin: 25px auto;
+  }
+
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+
+  .card-container .card {
+  border-top-left-radius: 80% 70%;
+  display: flex;
+  direction: rtl;
+}
+
+.card-container .card-body .card-title {
+  font-size: 20px;
+  font-weight: 500;
+  width: 50%;
+  text-decoration: underline;
+}
+
+
+.card-container .card-body {
+height: 400px;
+}
+
+
+
+}
+
+@media (max-width: 475px) {
+   body {
+    background-color: #121212;
+    background-image: url("/public/image/blob-scene-haikei_phone_red.svg");
+    background-repeat: no-repeat;
+    background-position: center -10px;
+    background-attachment: scroll;
+   
+  }
+
+
+      .container {
+    max-height: 880px;
+    max-width: 350px;
+    margin: auto;
+    padding: auto;
+  }
+
+  .navbar {
+    width: 350px;
+  }
+
+
+
+.social-content {
+  display: none;
+  flex-direction: row;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  gap: 40px;
+}
+
+
+  .my-jop {
+    margin-bottom: -35px;
+  }
+
+  .my-jop .slam {
+    font-size: 32px;
+  }
+
+  .my-jop .my-name {
+    font-size: 34px;
+  }
+
+  .my-jop .work {
+    font-size: 22px;
+  }
+  .work .writer {
+    font-size: 28px;
+  }
+
+  /* Skills Section Start */
+  .skills-slider {
+    padding: 0 20px;
+  }
+
+  .skill {
+    width: 110px;
+    margin: 0 4px;
+  }
+
+  .skill .outer {
+    width: 110px;
+    height: 110px;
+  }
+
+  .skill .inner {
+    width: 80px;
+    height: 80px;
+  }
+
+  .skill-name {
+    font-size: 0.85em;
+    letter-spacing: 4px;
+    margin-top: 17px;
+  }
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+
+
+
+
+
+ @media (max-width: 475px) {
+
+
+
+  .card-container .card-body {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .card-container .card-footer {
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 15px 10px;
+    margin-right: 0;
+    gap: 10px;
+  }
+
+  .card-buttons {
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .card-details {
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+}
+
+
+}
+
+
+@media (max-width: 380px) {
+   body {
+    background-color: #121212;
+    background-image: url("/public/image/blob-scene-haikei_phone_red.svg");
+    background-repeat: no-repeat;
+    background-position: center -10px;
+    background-attachment: scroll;
+   
+  }
+
+
+      .container {
+    max-height: 880px;
+    max-width: 310px;
+    margin: auto;
+    padding: auto;
+  }
+
+  .navbar {
+    width: 310px;
+  }
+
+
+
+.social-content {
+  display: none;
+  flex-direction: row;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  gap: 40px;
+}
+
+
+  .my-jop {
+    margin-bottom: -35px;
+  }
+
+  .my-jop .slam {
+    font-size: 32px;
+  }
+
+  .my-jop .my-name {
+    font-size: 34px;
+  }
+
+  .my-jop .work {
+    font-size: 22px;
+  }
+  .work .writer {
+    font-size: 28px;
+  }
+
+  /* Skills Section Start */
+  .skills-slider {
+    padding: 0 10px; /* تقليل الحواف */
+  }
+
+  .skill {
+    width: 100px; /* تقليل عرض الكارت */
+    margin: 0 3px;
+  }
+
+  .skill .outer {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skill .inner {
+    width: 75px;
+    height: 75px;
+  }
+
+  .skill-name {
+    font-size: 0.8em;
+    letter-spacing: 3px;
+    margin-top: 15px;
+  }
+
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+
+  .card-container .card {
+  border-top-left-radius: 80% 70%;
+  display: flex;
+  direction: rtl;
+}
+
+.card-container .card-body .card-title {
+  font-size: 20px;
+  font-weight: 500;
+  width: 50%;
+  text-decoration: underline;
+}
+
+
+.card-container .card-body {
+height: 400px;
+}
+
+
+
+
+.card-details {
+  font-size: 10px;
+
+}
+
+.card-container .card-footer .btn {
+  border-radius: 5px;
+  padding: 7px 8px;
+  margin-top: 20px;
+}
+
+#details img{
+  width: 300px !important;
+  height: 200px !important;
+}
+
+}
+
+
+
+
+
+@media (max-width: 320px) {
+   body {
+    background-color: #121212;
+    background-image: url("/public/image/blob-scene-haikei_phone_red.svg");
+    background-repeat: no-repeat;
+    background-position: center -10px;
+    background-attachment: scroll;
+   
+  }
+
+
+      .container {
+    max-height: 880px;
+    max-width: 280px;
+    margin: auto;
+    padding: auto;
+  }
+
+  .navbar {
+    width: 280px;
+  }
+
+
+
+.social-content {
+  display: none;
+  flex-direction: row;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  gap: 30px;
+}
+
+
+  .my-jop {
+    margin-bottom: -30px;
+  }
+
+  .my-jop .slam {
+    font-size: 30px;
+  }
+
+  .my-jop .my-name {
+    font-size: 30px;
+  }
+
+  .my-jop .work h1{
+    font-size: 18px;
+  }
+  .work .writer {
+    font-size: 19px;
+  }
+
+  /* Skills Section Start */
+  .skills-section {
+    padding: 10px 0;
+  }
+
+  .skills-slider{
+    width: 100%;
+  }
+
+  .skills-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .skill .outer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill .inner div {
+    font-size: 16px;
+  }
+
+  .skill-name {
+    margin-top: 15px;
+    font-size: 0.88em;
+  }
+
+  .skills-slider {
+    width: 98%;
+    margin: 25px auto;
+  }
+
+  /* Skills Section End */
+
+  .form-label {
+    margin-bottom: 1px;
+  }
+
+  #details .container {
+    max-height: fit-content;
+  }
+
+ 
+.card-container .card-footer .btn {
+  border-radius: 5px;
+  padding: 5px 5px;
+  margin-top: 5px;
+}
+
+ 
+  .card-container .card-body {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .card-container .card-footer {
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 15px 10px;
+    margin-right: 0;
+    gap: 10px;
+  }
+
+  .card-buttons {
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .card-details {
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+#details img{
+  width: 300px !important;
+  height: 200px !important;
+}
+
+}
+
+
+
+/* Detalis End */

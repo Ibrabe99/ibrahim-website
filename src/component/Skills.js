@@ -1,82 +1,67 @@
 import React, { useState, useEffect } from "react";
-
-import { skilldata } from "../skilldata"; 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-
+import axios from "axios";
 
 function Skills() {
   const [skills, setSkills] = useState([]);
 
-  // useEffect لجلب البيانات (محاكاة جلب API) عند تحميل المكون
   useEffect(() => {
-    const fetchSkills = () => {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve(skilldata); // نرجع البيانات من ملف skilldata
-        }, 500); // محاكاة تأخير بسيط لجلب البيانات
-      });
+    const fetchSkills = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/website_dashboard/api/skills");
+        const data = response.data;
+
+        const initialSkillsWithCounters = data.map(skill => ({
+          ...skill,
+          currentCounter: 0,
+          intervalId: null,
+        }));
+
+        setSkills(initialSkillsWithCounters);
+      } catch (error) {
+        console.error("Error fetching skills:", error);
+      }
     };
 
-    fetchSkills().then(data => {
-      // نجهز كل مهارة بإضافة حالة counter و intervalId لها
-      const initialSkillsWithCounters = data.map(skill => ({
-        ...skill,
-        currentCounter: 0, // العداد الحالي
-        intervalId: null, // لتخزين معرف المؤقت لكل مهارة
-      }));
-      setSkills(initialSkillsWithCounters);
-    });
+    fetchSkills();
 
-    // Cleanup: لإيقاف كل المؤقتات إذا تم إزالة المكون
     return () => {
       skills.forEach(skill => {
-        if (skill.intervalId) {
-          clearInterval(skill.intervalId);
-        }
+        if (skill.intervalId) clearInterval(skill.intervalId);
       });
     };
-  }, []); // [] لضمان تشغيل هذا useEffect مرة واحدة فقط عند التركيب
+  }, []);
 
-  // useEffect لكل مهارة لبدء المؤقتات
   useEffect(() => {
     if (skills.length > 0) {
-      const updatedSkills = skills.map(skill => {
-        // إذا كان المؤقت لم يبدأ لهذه المهارة بعد وقيمتها لم تصل بعد
-        if (skill.currentCounter < skill.value && skill.intervalId === null) {
+      skills.forEach(skill => {
+        if (skill.currentCounter < skill.level && skill.intervalId === null) {
           const interval = setInterval(() => {
-            setSkills(prevSkills => {
-              return prevSkills.map(s => {
+            setSkills(prevSkills =>
+              prevSkills.map(s => {
                 if (s.id === skill.id) {
                   const newCounter = s.currentCounter + 1;
-                  if (newCounter >= s.value) {
-                    clearInterval(s.intervalId); // إيقاف المؤقت عند الوصول للقيمة
-                    return { ...s, currentCounter: s.value, intervalId: null };
+                  if (newCounter >= s.level) {
+                    clearInterval(s.intervalId);
+                    return { ...s, currentCounter: s.level, intervalId: null };
                   }
                   return { ...s, currentCounter: newCounter };
                 }
                 return s;
-              });
-            });
-          }, 50); // سرعة عداد الكاونتر
+              })
+            );
+          }, 50);
 
-          return { ...skill, intervalId: interval }; // حفظ معرف المؤقت
+          setSkills(prev =>
+            prev.map(s => (s.id === skill.id ? { ...s, intervalId: interval } : s))
+          );
         }
-        return skill;
       });
-      // نستخدم دالة تحديث الحالة لوضع قائمة المهارات الجديدة
-      // ولكن يجب أن نكون حذرين لتجنب الحلقات اللانهائية هنا
-      // هذا الجزء يجب أن يعمل فقط عند الحاجة لتحديث معرفات المؤقتات
-      // إذا تم تشغيل هذا الـ useEffect مرات عديدة، قد يعيد بدء المؤقتات
-      // الطريقة الحالية بـ `skill.intervalId === null` تحاول منع ذلك.
-      // يفضل تحديث `skills` فقط إذا كان هناك تغيير فعلي في `intervalId` أو أي شيء آخر
-      // setSkills(updatedSkills); // ممكن تتسبب في حلقة لا نهائية لو مفيش تغييرات حقيقية
     }
-  }, [skills]); // هذا Effect سيعاد تشغيله عندما تتغير قائمة المهارات (مثلاً عند تحميلها لأول مرة)
+  }, [skills]);
 
-  // إعدادات السلايدر (يمكنك تخصيصها)
   const sliderSettings = {
     dots: true,
     infinite: false,
@@ -84,37 +69,21 @@ function Skills() {
     slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+      { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1 } },
     ],
   };
 
   return (
-    <div className="skills-section"> {/* حاوية لقسم المهارات */}
-    
+    <div className="skills-section">
       {skills.length > 3 ? (
         <Slider {...sliderSettings} className="skills-slider">
-          {skills.map((skill) => (
+          {skills.map(skill => (
             <div className="skill" key={skill.id}>
-              {/* هنا الدائرة الخارجية كـ outer */}
               <div className="outer">
-                {/* الدائرة الداخلية كـ inner وفيها الرقم */}
                 <div className="inner">
                   <div>{skill.currentCounter}%</div>
                 </div>
-                {/* SVG للدائرة التقدمية */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   version="1.1"
@@ -144,14 +113,14 @@ function Skills() {
                 </svg>
               </div>
               <div className="skill-name">
-                <span>{skill.name}</span> {/* اسم المهارة */}
+                <span>{skill.name}</span>
               </div>
             </div>
           ))}
         </Slider>
       ) : (
         <div className="skills-grid">
-          {skills.map((skill) => (
+          {skills.map(skill => (
             <div className="skill" key={skill.id}>
               <div className="outer">
                 <div className="inner">
