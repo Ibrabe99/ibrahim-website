@@ -59,7 +59,7 @@ function App() {
     
     const fetchAdminInfo = async () => {
       try {
-        const response = await axios.get("http://www.ibrahim.page.gd/api/admin");
+        const response = await axios.get("https://www.ibrahim.page.gd/api/admin");
         const adminData = response.data.data; 
 
         if (adminData) {
